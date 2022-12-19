@@ -1,75 +1,89 @@
-let rowDiv = document.createElement("div");
-let rowDiv1 = document.createElement("div");
-let rowDiv2 = document.createElement("div");
-let col1 = document.createElement("div");
-let col2 = document.createElement("div");
-let col3 = document.createElement("div");
-let col4 = document.createElement("div");
+let mainEle = document.getElementById("main");
+
+let div1 = document.getElementById("section1");
+div1.className ="one";
+let div2 = document.getElementById("section2");
+
+//section 1 title
+let title = document.createElement("h1");
+title.innerHTML = "To do list app";
+div1.appendChild(title);
+
+// div1
+let subDiv = document.createElement("div");
+subDiv.id = "addTask";
 
 
-let h1El = document.createElement("h1");
-let inputEl = document.createElement("input");
-let h1El2 = document.createElement("h1");
-inputEl.type = "text";
-inputEl.placeholder = "Task to be done";
-
-let pEl = document.createElement("p");
-pEl.id = "demo";
-let d = new Date();
-pEl.innerHTML = d;
-
-col3.appendChild(rowDiv2);
-rowDiv2.classList.add("row");
-
-// button
-let btnEl = document.createElement("button");
-btnEl.textContent = "Add"
-btnEl.id = "push";
-
-rowDiv2.appendChild(inputEl);
-rowDiv2.appendChild(btnEl);
-
-// image
-let imgEl = document.createElement("img");
-col3.appendChild(imgEl);
-imgEl.src = "./todo.jpeg"
-imgEl.width = "400";
+//section 1 div input
+let input = document.createElement("input");
+input.type = "text";
+input.id = "inputTask";
+input.placeholder = "Та таскаа оруулна уу";
 
 
-let labelEl = document.createElement("label");
-let ulEl = document.createElement("ul");
+let btn = document.createElement("button");
+btn.innerHTML = "Add";
 
-let liEl = document.createElement("li");
+//btn click
+btn.addEventListener("click", fnAddTask);
+subDiv.appendChild(input);
+subDiv.appendChild(btn);
+div1.appendChild(subDiv);
 
-let con = document.getElementById("container");
+//section 2 title
+let listTitle = document.createElement("h1");
+listTitle.innerHTML = "List";
 
-con.appendChild(rowDiv);
-rowDiv.classList.add("row");
-rowDiv.classList.add("one");
-rowDiv.appendChild(col1);
-col1.classList.add("col-2")
-rowDiv.appendChild(col2);
-col2.classList.add("col-2")
+//section 2 div tasks
+let subdiv2 = document.createElement("div");
+subdiv2.id = "tasks";
 
-col1.appendChild(h1El);
-col1.appendChild(pEl);
-h1El.textContent = "To Do List";
-col1.appendChild(rowDiv1);
-rowDiv1.classList.add("row")
-rowDiv2.id = "hi"
-rowDiv1.appendChild(col3);
-col3.classList.add("col-2");
+div2.appendChild(listTitle);
+div2.appendChild(subdiv2);
 
+//fnAddTask
+function fnAddTask() {
+  let aDiv = document.createElement("div");
+  aDiv.className = "task";
 
-rowDiv1.appendChild(col4);
-col4.classList.add("col-2");
-col2.classList.add("second");
-col2.appendChild(h1El2);
-col2.appendChild(ulEl);
-// ulEl.appendChild(liEl);
-h1El2.textContent = "Task list"
+  let inputTask = document.createElement("input");
+  inputTask.readOnly = true;
+  inputTask.value = input.value;
 
+  let action = document.createElement("div");
+  action.id = "actions";
+  action.className = "flex";
 
-function add() {
+  let editBtn = document.createElement("span");
+  editBtn.innerHTML = " &#9783";
 
+  editBtn.addEventListener("click", function () {
+    inputTask.readOnly = true;
+    inputTask.setAttribute("readonly", false);
+
+    console.log("inputTask.readOnly", inputTask.readOnly);
+    if (inputTask.readOnly) {
+      inputTask.readOnly = false;
+    } else {
+      inputTask.readOnly = true;
+    }
+    inputTask.readOnly = !inputTask.readOnly;
+  });
+
+  let delBtn = document.createElement("span");
+  delBtn.innerHTML = "&#10008";
+
+  delBtn.addEventListener("click", function () {
+    subdiv2.removeChild(aDiv);
+  });
+
+  action.appendChild(editBtn);
+  action.appendChild(delBtn);
+
+  aDiv.appendChild(inputTask);
+  aDiv.appendChild(action);
+
+  subdiv2.appendChild(aDiv);
+  input.value = "";
 }
+

@@ -1,62 +1,57 @@
-body {
+body{
     margin: 0;
 }
-
-#container {
-    max-width: 1200px;
+#main{
+    max-width: 800px;
     margin: 0 auto;
-    background-color: burlywood;
-    padding: 30px;
-}
-
-.row {
-    display: flex;
     text-align: center;
-    justify-content: space-between;
-    gap: 20px;
+    background-color: rgb(140, 176, 243);
 }
 
-.col-2 {
+.one{
+    border-bottom: 2px solid black;
+    padding: 50px 0;
+}
+#addTask{
     display: flex;
-    flex-direction: column;
-    gap: 5px;
+    justify-content: center;
 }
-
-.one {
-    border: 2px solid black;
-    padding: 20px;
-    border-radius: 20px;
+h1{
+    color: blue;
 }
-
-.second {
-    width: 500px;
-    background-color: rgb(233, 208, 175);
-}
-
-input {
-    width: 80%;
+input{
     padding: 5px;
-    border-radius: 10px;
-    background-color: bisque;
-
+    width: 300px;
+    border: none;
+    border-bottom:1px solid blue;
+    background-color: rgb(101, 169, 233);
+    color: white;
 }
 
-button {
-    width: 20%;
-    border-radius: 10px;
-    background-color: rgb(205, 72, 72);
-    color: wheat;
+::placeholder{
+    color: white;
 }
-
-.task {
-    display: flex;
+button{
+    border: none;
+    background-color: rgb(67, 67, 238);
+    color: white;
     padding: 10px;
-    box-sizing: border-box;
-    justify-content: space-between;
+}
+.task{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 5px;
 }
 
-.second h1 {
-    padding: 25px;
-    margin: 0;
-    border-bottom: 2px solid green;
+span{
+    background-color: blue;
+    padding: 5px;
+    margin: 0 1px;
+}
+
+
+#tasks{
+    padding: 20px;
 }
